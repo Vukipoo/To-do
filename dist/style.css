@@ -1,58 +1,146 @@
+:root {
+    --primary: #EA40A4;
+    --business: #3A82EE;
+    --personal: (var(--primary));
+    --light: #EEE;
+    --gray: #888;
+    --dark: #313154;
+    --danger: #FF5B57;
+
+    --shadow: 0 1px 3px rgba(0, 0 , 0, .1);
+
+    --business-glow: 0px 0px 4px rgba(58, 162, 238, 0.75);
+    --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+input:not([type='radio']):not([type='checkbox']), button{
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: initial;
 }
 
 body {
-    background-color: #717175;
-    color: #fff
+    background: var(--light);
+    color: var(--dark)
+}
+
+section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+h3{
+    color:  var(--dark);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem
+}
+
+h4{
+    color: var(--gray);
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.greeting .title{
+    display: flex;
 
 }
 
-.app header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1rem
+.greeting .title .input {
+    margin-left: 0.5rem;
+    flex: 1 1 0%;
+    min-width: 0;
 }
-    
-.app header h1 {
-        color: #fff;
-        font-weight: 400;
-        text-decoration: underline;
-        font-size: 24px;
-        font-weight: 400;
-}
-    
-.week-content h1  {
-    position: absolute;
-    left: 300px;
-    bottom: 350px
-}
-.inbox-content h1  {
-    position: absolute;
-    left: 300px;
-    bottom: 350px
 
-}.today-content h1  {
-    position: absolute;
-    left: 300px;
-    bottom: 350px
+.greeting .title,
+.greeting .title input {
+    color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.create-todo input[type='text']{
+    display: block;
+    width: 100%;
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    color: var(--dark);
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
 
 }
 
-.tabs-div{
+.create-todo .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap:1rem;
+    margin-bottom: 1.5rem;
+}
+
+.create-todo .options label{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    cursor: pointer
+}
+
+input[type='radio'],
+input[type='checkbox']{
+    display: none;
+}
+
+.bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border:2px solid var(--business);
+    box-shadow: var(--business-glow);
 
 }
 
-.add-task{
-    position: absolute;
-    left: 300px;
-    bottom: 300px;
-    display: flex;
+.bubble .personal {
+    border-color: var(--personal);
+    box-shadow: var(--personal-glow);
+
+}
+
+.bubble::after {
+    content: "";
+    display: block;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    background-color: var(--business);
+    box-shadow: var(--business-glow);
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+}
+
+.bubble .personal::after{
+    background-color: var(--personal);
+    box-shadow: var(--personal-glow);
 }
